@@ -14,8 +14,7 @@ export interface ExtendedRequest extends NextApiRequest {
 
 export const protect = async (req: ExtendedRequest, res: NextApiResponse, next: any) => {
   if (!req.headers.authorization || !req.headers.authorization.startsWith("Bearer ")) {
-    res.status(401).json({ message: "Not authorised, no token" })
-    return
+    return res.status(401).json({ message: "Not authorised, no token" })
   }
 
   try {
