@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Container from "react-bootstrap/Container"
 
-const HomePage: React.FC = () => {
+const BrowsePage: React.FC = () => {
   return (
     <>
       <Head>
@@ -10,13 +10,10 @@ const HomePage: React.FC = () => {
       </Head>
 
       <Container className="pb-4">
-        <h1>Welcome to NextJS!</h1>
-        <h3 style={{ fontSize: 30 }}>
-          Get started by editing <code style={{ color: "red" }}>pages/index.tsx</code>
-        </h3>
+        <h1 className="black-text">Browse</h1>
       </Container>
     </>
   )
 }
 
-export default HomePage
+export default BrowsePage
