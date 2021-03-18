@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 import bcrypt from "bcrypt"
 
-interface UserSchema extends mongoose.Document {
+export interface UserSchema extends mongoose.Document {
   firstName: string
   lastName: string
   email: string
