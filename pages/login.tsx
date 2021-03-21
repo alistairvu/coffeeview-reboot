@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button"
 import Col from "react-bootstrap/Col"
 import Alert from "react-bootstrap/Alert"
 import Spinner from "react-bootstrap/Spinner"
+import Link from "next/link"
 import { useState, useEffect } from "react"
 import { useAuth } from "../hooks"
 import { useRouter } from "next/router"
@@ -84,10 +85,13 @@ const LoginPage: React.FC = () => {
                     {loginError}
                   </Alert>
                 )}
-                <Button type="submit" className="btn btn-primary" disabled={isLoggingIn}>
+                <Button type="submit" variant="primary" disabled={isLoggingIn} className="mb-3">
                   {isLoggingIn ? <Spinner animation="border" /> : "LOG IN"}
                 </Button>
               </Form>
+              <p>
+                New to coffeeview? <Link href="/register">Click here to register.</Link>
+              </p>
             </Card.Body>
           </Card>
         </Col>

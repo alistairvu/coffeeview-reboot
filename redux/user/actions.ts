@@ -25,7 +25,7 @@ export const loginUser = createAsyncThunk("user/login", async (loginInfo: LoginI
 
 export const registerUser = createAsyncThunk("user/register", async (registerInfo: RegisterInfo, thunkAPI) => {
   try {
-    const res = await axios.put("/api/users", registerInfo)
+    const res = await axios.post("/api/users", registerInfo)
     const { data, token } = res.data
     cookie.set("coffeeview-token", token)
     return data

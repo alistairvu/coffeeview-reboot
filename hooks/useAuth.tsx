@@ -24,12 +24,10 @@ export const useAuth = () => {
       return
     }
 
-    console.log(cookie.get("coffeeview-token"))
     const token = cookie.get("coffeeview-token")
 
     try {
       const decoded = jwt.verify(token, process.env.NEXT_PUBLIC_JWT_SECRET) as TokenData
-      console.log(decoded)
       if (decoded._id === userInfo._id) {
         setIsAuth(true)
       }
