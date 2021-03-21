@@ -6,7 +6,7 @@ import { useState } from "react"
 import { BrowseFilter } from "../components/Browse"
 
 interface FilterInterface {
-  price: number
+  price: string
 }
 
 const BrowsePage: React.FC = () => {
