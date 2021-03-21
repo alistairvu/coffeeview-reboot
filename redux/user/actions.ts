@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
-import cookie from "cookie"
+import cookie from "js-cookie"
 
 interface LoginInfo {
   email: string
@@ -14,18 +14,20 @@ interface RegisterInfo extends LoginInfo {
 
 export const loginUser = createAsyncThunk("user/login", async (loginInfo: LoginInfo, thunkAPI) => {
   try {
-    const res = await axios.put("/api/users", loginInfo)
-    const { data } = res.data
+    const res = await axios.put("/api/users", loginInfo, { withCredentials: true })
+    const { data, token } = res.data
+    cookie.set("coffeeview-token", token)
     return data
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data.message)
   }
 })
 
-export const registerUser = createAsyncThunk("user/login", async (registerInfo: RegisterInfo, thunkAPI) => {
+export const registerUser = createAsyncThunk("user/register", async (registerInfo: RegisterInfo, thunkAPI) => {
   try {
     const res = await axios.put("/api/users", registerInfo)
-    const { data } = res.data
+    const { data, token } = res.data
+    cookie.set("coffeeview-token", token)
     return data
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data.message)

@@ -18,8 +18,17 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const newUser = await User.create({ firstName, lastName, email, password })
   const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET)
-  res.setHeader("Set-Cookie", serialize("coffeeview-token", token))
-  res.send({ success: 1, data: newUser })
+  res.send({
+    success: 1,
+    data: {
+      _id: newUser._id,
+      firstName: newUser.firstName,
+      lastName: newUser.lastName,
+      email: newUser.email,
+      isAdmin: newUser.isAdmin,
+    },
+    token: token,
+  })
 }
 
 const loginUser = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -35,8 +44,17 @@ const loginUser = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const token = jwt.sign({ _id: matchingUser._id }, process.env.JWT_SECRET)
-  res.setHeader("Set-Cookie", serialize("coffeeview-token", token))
-  res.send({ success: 1, data: matchingUser })
+  res.send({
+    success: 1,
+    data: {
+      _id: matchingUser._id,
+      firstName: matchingUser.firstName,
+      lastName: matchingUser.lastName,
+      email: matchingUser.email,
+      isAdmin: matchingUser.isAdmin,
+    },
+    token: token,
+  })
 }
 
 const handler = nc().post(registerUser).put(loginUser)

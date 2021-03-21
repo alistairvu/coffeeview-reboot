@@ -1,6 +1,8 @@
+@import "./_variables.scss";
 @import "~bootstrap/scss/bootstrap.scss";
+@import "./_bootswatch.scss";
 
-$nprogress-bar-color: #29d;
+$nprogress-bar-color: $teal;
 
 #nprogress {
   pointer-events: none;
