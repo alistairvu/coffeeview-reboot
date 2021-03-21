@@ -3,7 +3,6 @@ import nc from "next-connect"
 import jwt from "jsonwebtoken"
 import User from "../../../models/User"
 import connectDB from "../../../db"
-import { serialize } from "cookie"
 
 connectDB()
 
