@@ -14,7 +14,7 @@ export const AppHeader: React.FC = () => {
   const dispatch = useDispatch()
 
   return (
-    <Navbar bg="primary" variant="dark" expand="lg" className="mb-3">
+    <Navbar bg="primary" variant="dark" expand="lg" className="mb-3" collapseOnSelect>
       <Container>
         <Link href="/" passHref>
           <Navbar.Brand>coffeeview</Navbar.Brand>
