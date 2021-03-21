@@ -8,7 +8,7 @@ connectDB()
 const getCafeById = async (req: NextApiRequest, res: NextApiResponse) => {
   const matchingCafe = await Cafe.findById(req.query.id)
 
-  if (!matchingCafe) {
+  if (!matchingCafe || !matchingCafe.isShown) {
     return res.status(404).send({ success: 0, message: "No matching cafes found" })
   }
   return res.send({ success: 1, data: { ...matchingCafe.toJSON(), reviewAverage: matchingCafe.reviewAverage } })

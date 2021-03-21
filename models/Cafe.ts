@@ -8,6 +8,7 @@ export interface CafeSchema extends mongoose.Document {
   phone: string
   images: string[]
   tags: string[]
+  isShown: boolean
   reviewTotal: number
   reviewCount: number
   reviewAverage: number
@@ -37,6 +38,10 @@ const Cafe = new mongoose.Schema({
   images: {
     type: [String],
     required: true,
+  },
+  isShown: {
+    type: Boolean,
+    default: false,
   },
   tags: {
     type: [String],

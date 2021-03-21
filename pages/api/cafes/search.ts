@@ -12,8 +12,11 @@ const searchCafes = async (req: NextApiRequest, res: NextApiResponse) => {
   const keyword = req.query.keyword
     ? {
         name: { $regex: `${req.query.keyword}`, $options: "i" },
+        isShown: true,
       }
-    : {}
+    : {
+        isShown: true,
+      }
 
   const count = await Cafe.countDocuments(keyword)
 

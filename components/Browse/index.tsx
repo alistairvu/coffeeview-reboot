@@ -1,3 +1,3 @@
-import { BrowseFilter } from "./BrowseFilter"
+import { BrowseCard } from "./BrowseCard"
 
-export { BrowseFilter }
+export { BrowseCard }
